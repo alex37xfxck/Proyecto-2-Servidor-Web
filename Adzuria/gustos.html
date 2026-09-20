@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adzuria | Gustos musicales</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Navegación -->
+    <header class="navbar">
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                <span>Adzuria</span>
+            </a>
+
+            <a href="index.html" class="back-link">
+                ← Volver
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- Contenido principal -->
+    <main class="container">
+
+        <!-- Encabezado -->
+        <section class="hero">
+
+            <span class="eyebrow">
+                ADZURIA · MÚSICA
+            </span>
+
+            <h1>
+                Mis gustos musicales
+            </h1>
+
+            <p>
+                Descubre mis gustos musicales y explora mi experiencia
+                personalizada mediante Spotify.
+            </p>
+
+            <button
+                class="spotify-button"
+                onclick="loginWithSpotify()"
+            >
+                🎧 Conectar con Spotify
+            </button>
+
+        </section>
+
+
+        <!-- Selector de periodo -->
+        <section class="music-period">
+
+            <span class="eyebrow">
+                TU HISTORIAL MUSICAL
+            </span>
+
+            <h2>
+                Explora tus gustos
+            </h2>
+
+            <div class="period-selector">
+
+                <button
+                    class="period-button active"
+                    data-period="short_term"
+                >
+                    4 semanas
+                </button>
+
+                <button
+                    class="period-button"
+                    data-period="medium_term"
+                >
+                    6 meses
+                </button>
+
+                <button
+                    class="period-button"
+                    data-period="long_term"
+                >
+                    Todo el tiempo
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Información musical -->
+        <section class="member-grid">
+
+            <!-- Perfil -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    👤
+                </div>
+
+                <h2>
+                    Mi perfil de Spotify
+                </h2>
+
+                <div id="spotify-profile">
+                    <p>
+                        Cargando tu perfil...
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- Artistas -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    🎤
+                </div>
+
+                <h2>
+                    Mis artistas favoritos
+                </h2>
+
+                <div id="top-artists">
+                    <p>
+                        Cargando tus artistas...
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- Canciones -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    💿
+                </div>
+
+                <h2>
+                    Mis canciones favoritas
+                </h2>
+
+                <div id="top-tracks">
+                    <p>
+                        Cargando tus canciones...
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- Recientes -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    🕘
+                </div>
+
+                <h2>
+                    Escuchado recientemente
+                </h2>
+
+                <div id="recently-played">
+                    <p>
+                        Cargando tu actividad reciente...
+                    </p>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- Regresar -->
+        <a href="index.html" class="back-link">
+            ← Volver al perfil de Adzuria
+        </a>
+
+    </main>
+
+
+    <!-- Spotify -->
+    <script src="../spotify.js"></script>
+
+</body>
+</html>

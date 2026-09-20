@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conectando con Spotify...</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="hero">
+
+            <span class="eyebrow">
+                SPOTIFY
+            </span>
+
+            <h1>
+                Conectando con Spotify...
+            </h1>
+
+            <p id="message">
+                Estamos preparando tu experiencia musical.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const CLIENT_ID =
+            "a2c7f03b916b4d808baddd013980dcbf";
+
+        const REDIRECT_URI =
+            "http://127.0.0.1:5500/callback.html";
+
+
+        /*
+         * Intercambia el código de Spotify
+         * por los tokens de acceso.
+         */
+        async function getAccessToken(code) {
+
+            const verifier =
+                sessionStorage.getItem(
+                    "spotify_code_verifier"
+                );
+
+            if (!verifier) {
+                throw new Error(
+                    "No encontramos el código de verificación."
+                );
+            }
+
+
+            const response = await fetch(
+                "https://accounts.spotify.com/api/token",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    },
+
+                    body: new URLSearchParams({
+
+                        client_id:
+                            CLIENT_ID,
+
+                        grant_type:
+                            "authorization_code",
+
+                        code:
+                            code,
+
+                        redirect_uri:
+                            REDIRECT_URI,
+
+                        code_verifier:
+                            verifier
+
+                    })
+                }
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Spotify rechazó la solicitud de acceso."
+                );
+
+            }
+
+
+            return await response.json();
+
+        }
+
+
+        /*
+         * Determina qué integrante inició el login
+         * a partir de la ruta que guardamos.
+         */
+        function getUserFromReturnPath(returnPath) {
+
+            if (returnPath.includes("/Alex/")) {
+                return "Alex";
+            }
+
+            if (returnPath.includes("/Adzuria/")) {
+                return "Adzuria";
+            }
+
+            if (returnPath.includes("/Efra/")) {
+                return "Efra";
+            }
+
+            if (returnPath.includes("/Erik/")) {
+                return "Erik";
+            }
+
+            return null;
+        }
+
+
+        /*
+         * Conecta Spotify y guarda los tokens
+         * para el integrante correcto.
+         */
+        async function connectSpotify() {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const code =
+                params.get("code");
+
+            const error =
+                params.get("error");
+
+
+            if (error) {
+
+                throw new Error(
+                    "No autorizaste el acceso a Spotify."
+                );
+
+            }
+
+
+            if (!code) {
+
+                throw new Error(
+                    "No recibimos el código de Spotify."
+                );
+
+            }
+
+
+            /*
+             * Recuperamos la página desde
+             * la que se inició el login.
+             */
+            const returnPath =
+                sessionStorage.getItem(
+                    "spotify_return_path"
+                );
+
+
+            if (!returnPath) {
+
+                throw new Error(
+                    "No pudimos determinar el perfil de destino."
+                );
+
+            }
+
+
+            /*
+             * Determinamos al integrante.
+             */
+            const user =
+                getUserFromReturnPath(
+                    returnPath
+                );
+
+
+            if (!user) {
+
+                throw new Error(
+                    "No pudimos identificar al usuario."
+                );
+
+            }
+
+
+            /*
+             * Obtenemos los tokens.
+             */
+            const tokenData =
+                await getAccessToken(code);
+
+
+            /*
+             * Creamos las claves específicas
+             * del integrante.
+             */
+            const accessTokenKey =
+                "spotify_access_token_" + user;
+
+            const refreshTokenKey =
+                "spotify_refresh_token_" + user;
+
+
+            /*
+             * Guardamos el access token.
+             */
+            sessionStorage.setItem(
+                accessTokenKey,
+                tokenData.access_token
+            );
+
+
+            /*
+             * Guardamos el refresh token.
+             */
+            if (tokenData.refresh_token) {
+
+                sessionStorage.setItem(
+                    refreshTokenKey,
+                    tokenData.refresh_token
+                );
+
+            }
+
+
+            /*
+             * Limpiamos datos temporales.
+             */
+            sessionStorage.removeItem(
+                "spotify_code_verifier"
+            );
+
+            sessionStorage.removeItem(
+                "spotify_return_path"
+            );
+
+
+            /*
+             * Mensaje visual.
+             */
+            document.getElementById(
+                "message"
+            ).textContent =
+                "¡Spotify conectado! Preparando tu perfil...";
+
+
+            /*
+             * Regresamos al gustos.html
+             * correspondiente.
+             */
+            setTimeout(() => {
+
+                window.location.href =
+                    returnPath;
+
+            }, 700);
+
+        }
+
+
+        /*
+         * Ejecutamos el proceso.
+         */
+        connectSpotify().catch(error => {
+
+            console.error(error);
+
+            document.getElementById(
+                "message"
+            ).textContent =
+                error.message;
+
+        });
+
+    </script>
+
+</body>
+</html>
