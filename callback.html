@@ -52,8 +52,63 @@
         const CLIENT_ID =
             "a2c7f03b916b4d808baddd013980dcbf";
 
+        function normalizeSpotifyHost() {
+
+            if (window.location.hostname === "localhost") {
+
+                const port =
+                    window.location.port
+                        ? ":" + window.location.port
+                        : "";
+
+                const normalizedUrl =
+                    "http://127.0.0.1" +
+                    port +
+                    window.location.pathname +
+                    window.location.search +
+                    window.location.hash;
+
+                window.location.replace(normalizedUrl);
+
+                return false;
+            }
+
+            return true;
+        }
+
+
+        const SPOTIFY_HOST_OK =
+            normalizeSpotifyHost();
+
+
+        function getSpotifyRedirectUri() {
+
+            if (
+                window.location.protocol !== "http:" ||
+                window.location.hostname !== "127.0.0.1"
+            ) {
+                throw new Error(
+                    "Spotify debe ejecutarse desde el navegador de la VM usando 127.0.0.1."
+                );
+            }
+
+
+            const port =
+                window.location.port
+                    ? ":" + window.location.port
+                    : "";
+
+
+            return (
+                "http://127.0.0.1" +
+                port +
+                "/callback.html"
+            );
+        }
+
+
         const REDIRECT_URI =
-            "http://127.0.0.1:5500/callback.html";
+            getSpotifyRedirectUri();
 
 
         /* =====================================================
@@ -150,24 +205,12 @@
 
         function getUserFromReturnPath(returnPath) {
 
-            const validPaths = {
+            const match =
+                returnPath.match(
+                    /\/(Alex|Adzuria|Efra|Erik)\/gustos\.html$/
+                );
 
-                "/Alex/gustos.html":
-                    "Alex",
-
-                "/Adzuria/gustos.html":
-                    "Adzuria",
-
-                "/Efra/gustos.html":
-                    "Efra",
-
-                "/Erik/gustos.html":
-                    "Erik"
-
-            };
-
-
-            return validPaths[returnPath] || null;
+            return match ? match[1] : null;
         }
 
 
@@ -232,7 +275,9 @@
             if (!returnPath) {
 
                 throw new Error(
-                    "No pudimos determinar el perfil de destino."
+                    "No encontramos la sesión de origen. " +
+                    "Regresa a la página de gustos y pulsa " +
+                    "«Conectar con Spotify» nuevamente."
                 );
             }
 
@@ -273,13 +318,14 @@
 
 
             if (
-                returnedState !== null &&
-                savedState !== null &&
+                !returnedState ||
+                !savedState ||
                 returnedState !== savedState
             ) {
 
                 throw new Error(
-                    "La validación de seguridad de Spotify falló."
+                    "La validación de seguridad de Spotify falló. " +
+                    "Inicia el proceso nuevamente desde la página de gustos."
                 );
             }
 

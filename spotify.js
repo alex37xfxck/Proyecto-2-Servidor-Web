@@ -5,8 +5,64 @@
 const CLIENT_ID =
     "a2c7f03b916b4d808baddd013980dcbf";
 
+function normalizeSpotifyHost() {
+
+    if (window.location.hostname === "localhost") {
+
+        const port =
+            window.location.port
+                ? ":" + window.location.port
+                : "";
+
+        const normalizedUrl =
+            "http://127.0.0.1" +
+            port +
+            window.location.pathname +
+            window.location.search +
+            window.location.hash;
+
+        window.location.replace(normalizedUrl);
+
+        return false;
+    }
+
+    return true;
+}
+
+
+const SPOTIFY_HOST_OK =
+    normalizeSpotifyHost();
+
+
+function getSpotifyRedirectUri() {
+
+    if (
+        window.location.protocol !== "http:" ||
+        window.location.hostname !== "127.0.0.1"
+    ) {
+        throw new Error(
+            "Spotify debe ejecutarse desde el navegador de la VM " +
+            "usando 127.0.0.1."
+        );
+    }
+
+
+    const port =
+        window.location.port
+            ? ":" + window.location.port
+            : "";
+
+
+    return (
+        "http://127.0.0.1" +
+        port +
+        "/callback.html"
+    );
+}
+
+
 const REDIRECT_URI =
-    "http://127.0.0.1:5500/callback.html";
+    getSpotifyRedirectUri();
 
 
 /* =========================================================
@@ -118,6 +174,16 @@ async function loginWithSpotify() {
 
     const returnPath =
         window.location.pathname;
+
+    const validReturn =
+        /\/(Alex|Adzuria|Efra|Erik)\/gustos\.html$/;
+
+    if (!validReturn.test(returnPath)) {
+        alert(
+            "No se pudo identificar la página de gustos del integrante."
+        );
+        return;
+    }
 
     sessionStorage.setItem(
         "spotify_return_path",
