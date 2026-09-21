@@ -1,73 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Título de la página -->
     <title>Alex | Tema libre</title>
 
+    <!-- Hoja de estilos general del proyecto -->
     <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
+    <!-- =====================================================
+         NAVEGACIÓN
+         Esta barra se mantiene igual en las páginas de todos
+         los integrantes.
+         ===================================================== -->
     <header class="navbar">
+
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                Proyecto 2
+
+            <!-- Nombre / logo del proyecto -->
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                <span>Proyecto 2</span>
             </a>
 
-            <a href="index.html" class="back-link">
-                ← Alex
+            <!-- Regresa directamente al índice principal -->
+            <a href="../index.html" class="back-link">
+                ← Proyecto
             </a>
+
         </div>
+
     </header>
 
-    <main>
 
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+    <main class="container">
+
+        <!-- =================================================
+             ENCABEZADO
+             Aquí se identifica al integrante y la sección.
+             ================================================= -->
         <section class="hero">
-            <p class="hero-tag">ALEX</p>
 
-            <h1>Tema libre</h1>
+            <!-- Nombre del integrante -->
+            <span class="eyebrow">
+                ALEX · TEMA LIBRE
+            </span>
 
+            <!-- Título -->
+            <h1>
+                Tema libre
+            </h1>
+
+            <!-- Introducción -->
             <p>
-                En esta sección hablaré sobre un tema de interés personal.
+                En esta sección se desarrollará un tema de
+                interés personal.
             </p>
+
         </section>
 
-        <section class="cards-container">
 
-            <article class="person-card">
-                <h2>💻 Tecnología</h2>
+        <!-- =================================================
+             CONTENIDO DEL TEMA LIBRE
+             
+             ESTA PARTE ES LA QUE DESARROLLARÁ TU COMPAÑERA.
+
+             Puede cambiar completamente:
+             - cantidad de tarjetas
+             - títulos
+             - textos
+             - imágenes
+             - colores
+             - distribución
+             - animaciones
+             - estructura interna
+
+             Lo importante es mantener esta sección dentro
+             del <main> y conservar la navegación general.
+             ================================================= -->
+        <section class="member-grid">
+
+
+            <!-- =================================================
+                 BLOQUE / SUBTEMA 1
+                 ================================================= -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    ✨
+                </div>
+
+                <h2>
+                    Subtema 1
+                </h2>
+
                 <p>
-                    Aquí puedes hablar sobre un tema tecnológico
-                    que sea de tu interés.
+                    Espacio reservado para desarrollar el primer
+                    apartado del tema elegido.
                 </p>
+
             </article>
 
-            <article class="person-card">
-                <h2>🎮 Pasatiempos</h2>
+
+            <!-- =================================================
+                 BLOQUE / SUBTEMA 2
+                 ================================================= -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    📌
+                </div>
+
+                <h2>
+                    Subtema 2
+                </h2>
+
                 <p>
-                    Aquí puedes compartir información sobre alguna
-                    actividad que disfrutes realizar.
+                    Espacio reservado para desarrollar el segundo
+                    apartado del tema elegido.
                 </p>
+
             </article>
 
-            <article class="person-card">
-                <h2>🌎 Tema de interés</h2>
+
+            <!-- =================================================
+                 BLOQUE / SUBTEMA 3
+                 ================================================= -->
+            <article class="info-card">
+
+                <div class="card-icon">
+                    💡
+                </div>
+
+                <h2>
+                    Subtema 3
+                </h2>
+
                 <p>
-                    Puedes utilizar este espacio para desarrollar
-                    cualquier otro tema que te interese.
+                    Espacio reservado para desarrollar el tercer
+                    apartado del tema elegido.
                 </p>
+
             </article>
+
 
         </section>
 
     </main>
 
-    <footer>
-        <p>Proyecto 2 · Servidor Web · GNU/Linux</p>
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+         ===================================================== -->
+    <footer class="footer">
+
+        <p>
+            Proyecto 2 · Servidor Web · GNU/Linux
+        </p>
+
+        <p class="footer-tech">
+            Alex · Tema libre
+        </p>
+
     </footer>
 
 </body>
+
 </html>

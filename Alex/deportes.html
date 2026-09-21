@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,64 +12,671 @@
 
 <body>
 
+    <!-- =====================================================
+         NAVEGACIÓN
+         ===================================================== -->
     <header class="navbar">
+
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                Proyecto 2
+
+            <!-- Logo del proyecto -->
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                <span>Proyecto 2</span>
             </a>
 
-            <a href="index.html" class="back-link">
-                ← Alex
+            <!-- Regreso al índice principal -->
+            <a href="../index.html" class="back-link">
+                ← Proyecto
             </a>
+
         </div>
+
     </header>
 
-    <main>
 
-        <section class="hero">
-            <p class="hero-tag">ALEX</p>
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+    <main class="container">
 
-            <h1>Deportes</h1>
+
+        <!-- =================================================
+             ENCABEZADO
+             ================================================= -->
+        <section class="hero sports-hero">
+
+            <span class="eyebrow">
+                ALEX · DEPORTES
+            </span>
+
+            <h1>
+                Mis deportes
+            </h1>
 
             <p>
-                En esta sección encontrarás los deportes que me gustan
-                o que practico.
+                Conoce los deportes que más me interesan,
+                las actividades que he realizado y algunos
+                de mis equipos y deportistas favoritos.
             </p>
-        </section>
-
-        <section class="cards-container">
-
-            <article class="person-card">
-                <h2>⚽ Mi deporte favorito</h2>
-                <p>
-                    Aquí puedes explicar cuál es tu deporte favorito
-                    y por qué te gusta.
-                </p>
-            </article>
-
-            <article class="person-card">
-                <h2>🏋️ Deportes que practico</h2>
-                <p>
-                    Aquí puedes mencionar los deportes o actividades
-                    físicas que realizas.
-                </p>
-            </article>
-
-            <article class="person-card">
-                <h2>🏆 Equipos o deportistas</h2>
-                <p>
-                    Aquí puedes hablar de tus equipos o deportistas
-                    favoritos.
-                </p>
-            </article>
 
         </section>
+
+
+        <!-- =================================================
+             1. DEPORTES QUE MÁS ME INTERESAN
+             ================================================= -->
+        <section class="sports-section">
+
+            <div class="sports-section-heading">
+
+                <span class="section-label">
+                    MIS FAVORITOS
+                </span>
+
+                <h2>
+                    Deportes que más me interesan
+                </h2>
+
+                <p>
+                    Estos son algunos de los deportes que más
+                    llaman mi atención.
+                </p>
+
+            </div>
+
+
+            <div class="favorite-sports-grid">
+
+                <!-- Fútbol -->
+                <article class="favorite-sport-card">
+
+                    <div class="favorite-sport-image">
+
+                        <img
+                            src="../img/Alex_Deportes/Interes_Futbol.png"
+                            alt="Fútbol"
+                        >
+
+                    </div>
+
+                    <div class="favorite-sport-content">
+
+                        <span class="sport-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Fútbol
+                        </h3>
+
+                        <p>
+                            Uno de los deportes que más me interesan.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Skate -->
+                <article class="favorite-sport-card">
+
+                    <div class="favorite-sport-image">
+
+                        <img
+                            src="../img/Alex_Deportes/Interes_skate.png"
+                            alt="Skate"
+                        >
+
+                    </div>
+
+                    <div class="favorite-sport-content">
+
+                        <span class="sport-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Skate
+                        </h3>
+
+                        <p>
+                            Una disciplina que siempre ha llamado mi atención.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Box -->
+                <article class="favorite-sport-card">
+
+                    <div class="favorite-sport-image">
+
+                        <img
+                            src="../img/Alex_Deportes/Interes_Box.png"
+                            alt="Box"
+                        >
+
+                    </div>
+
+                    <div class="favorite-sport-content">
+
+                        <span class="sport-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Box
+                        </h3>
+
+                        <p>
+                            Un deporte que también forma parte de mis intereses.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             2. DEPORTES QUE HE REALIZADO
+             ================================================= -->
+        <section class="sports-section">
+
+            <div class="sports-section-heading">
+
+                <span class="section-label">
+                    MI EXPERIENCIA
+                </span>
+
+                <h2>
+                    Deportes que he realizado
+                </h2>
+
+                <p>
+                    Una representación visual de mi experiencia
+                    y del tiempo que he dedicado a cada actividad.
+                </p>
+
+            </div>
+
+
+            <div class="sports-experience-grid">
+
+                <!-- Kick Boxing -->
+                <article class="sport-experience-card">
+
+                    <div
+                        class="sport-circle"
+                        style="--percent: 70;"
+                    >
+
+                        <div class="sport-circle-inner">
+
+                            <img
+                                src="../img/Alex_Deportes/Exp_Kickboxing.png"
+                                alt="Kick Boxing"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sport-experience-content">
+
+                        <span class="sport-percent">
+                            70%
+                        </span>
+
+                        <h3>
+                            Kick Boxing
+                        </h3>
+
+                        <p>
+                            3 años
+                        </p>
+
+                    </div>
+
+
+                    <div class="experience-bar">
+                        <span style="width: 70%;"></span>
+                    </div>
+
+                </article>
+
+
+                <!-- Skate -->
+                <article class="sport-experience-card">
+
+                    <div
+                        class="sport-circle"
+                        style="--percent: 50;"
+                    >
+
+                        <div class="sport-circle-inner">
+
+                            <img
+                                src="../img/Alex_Deportes/Exp_Skate.png"
+                                alt="Skate"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sport-experience-content">
+
+                        <span class="sport-percent">
+                            50%
+                        </span>
+
+                        <h3>
+                            Skate
+                        </h3>
+
+                        <p>
+                            2 años
+                        </p>
+
+                    </div>
+
+
+                    <div class="experience-bar">
+                        <span style="width: 50%;"></span>
+                    </div>
+
+                </article>
+
+
+                <!-- Gimnasio -->
+                <article class="sport-experience-card">
+
+                    <div
+                        class="sport-circle"
+                        style="--percent: 90;"
+                    >
+
+                        <div class="sport-circle-inner">
+
+                            <img
+                                src="../img/Alex_Deportes/Exp_Gym.png"
+                                alt="Gimnasio"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sport-experience-content">
+
+                        <span class="sport-percent">
+                            90%
+                        </span>
+
+                        <h3>
+                            Gimnasio / Pesas
+                        </h3>
+
+                        <p>
+                            3 años intermitentes
+                        </p>
+
+                    </div>
+
+
+                    <div class="experience-bar">
+                        <span style="width: 90%;"></span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             3. EQUIPOS O DEPORTISTAS FAVORITOS
+
+             El collage no utiliza enlaces.
+
+             Al pasar el mouse:
+             - la tarjeta se eleva;
+             - la imagen aumenta;
+             - aparece una descripción;
+             - el elemento seleccionado queda resaltado.
+             ================================================= -->
+        <section class="sports-section">
+
+            <div class="sports-section-heading">
+
+                <span class="section-label">
+                    MIS REFERENTES
+                </span>
+
+                <h2>
+                    Equipos o deportistas favoritos
+                </h2>
+
+                <p>
+                    Algunas de las personas y equipos que más
+                    me interesan dentro del mundo deportivo.
+                </p>
+
+            </div>
+
+
+            <div class="sports-collage">
+
+
+                <!-- =================================================
+                     FC BARCELONA
+                     ================================================= -->
+                <article class="collage-item collage-barcelona">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Barcelona.png"
+                            alt="FC Barcelona"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            EQUIPO
+                        </span>
+
+                        <h3>
+                            FC Barcelona
+                        </h3>
+
+                        <p>
+                            Me gusta seguir al Barcelona por sus fichajes,
+                            sus alineaciones y la trayectoria que ha construido.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     LIONEL MESSI
+                     ================================================= -->
+                <article class="collage-item collage-messi">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Messi.jpg"
+                            alt="Lionel Messi"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            FUTBOLISTA
+                        </span>
+
+                        <h3>
+                            Lionel Messi
+                        </h3>
+
+                        <p>
+                            Lo sigo por su trayectoria y por sus actuaciones
+                            en partidos importantes.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JULIÁN QUIÑONES
+                     ================================================= -->
+                <article class="collage-item collage-quinones">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Quinones.jpg"
+                            alt="Julián Quiñones"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            FUTBOLISTA
+                        </span>
+
+                        <h3>
+                            Julián Quiñones
+                        </h3>
+
+                        <p>
+                            Futbolista mexicano que seguí especialmente
+                            durante sus participaciones con la selección.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     ERLING HAALAND
+                     ================================================= -->
+                <article class="collage-item collage-haaland">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Haaland.jpg"
+                            alt="Erling Haaland"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            FUTBOLISTA
+                        </span>
+
+                        <h3>
+                            Erling Haaland
+                        </h3>
+
+                        <p>
+                            Me gusta seguir su estilo de juego y su capacidad
+                            para aprovechar las oportunidades frente al arco.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     KYLIAN MBAPPÉ
+                     ================================================= -->
+                <article class="collage-item collage-mbappe">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Mbappe.jpg"
+                            alt="Kylian Mbappé"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            FUTBOLISTA
+                        </span>
+
+                        <h3>
+                            Kylian Mbappé
+                        </h3>
+
+                        <p>
+                            Me gusta seguirlo por su velocidad, capacidad
+                            ofensiva y presencia en partidos importantes.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     LAZY BOY
+                     ================================================= -->
+                <article class="collage-item collage-lazyboy">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_LazyBoy.jpg"
+                            alt="Lazy Boy"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            PELEADOR
+                        </span>
+
+                        <h3>
+                            Lazy Boy
+                        </h3>
+
+                        <p>
+                            Peleador al que sigo desde hace tiempo.
+                            Me gusta especialmente la perspectiva con la
+                            que ve y analiza cada pelea.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     SERGIO LUCEA
+                     ================================================= -->
+                <article class="collage-item collage-sergio">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_SergioLucea.jpg"
+                            alt="Sergio Lucea"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            SKATER · CREADOR
+                        </span>
+
+                        <h3>
+                            Sergio Lucea
+                        </h3>
+
+                        <p>
+                            Skater y creador de contenido al que seguí mucho
+                            cuando estaba aprendiendo a andar en skate.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     ALLEN IVERSON
+                     ================================================= -->
+                <article class="collage-item collage-iverson">
+
+                    <div class="collage-image">
+
+                        <img
+                            src="../img/Alex_Deportes/fav_Iverson.jpg"
+                            alt="Allen Iverson"
+                        >
+
+                    </div>
+
+                    <div class="collage-overlay">
+
+                        <span>
+                            BASQUETBOLISTA
+                        </span>
+
+                        <h3>
+                            Allen Iverson
+                        </h3>
+
+                        <p>
+                            Basquetbolista que me gusta especialmente
+                            por su estilo de juego y rapidez.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
 
     </main>
 
-    <footer>
-        <p>Proyecto 2 · Servidor Web · GNU/Linux</p>
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+         ===================================================== -->
+    <footer class="footer">
+
+        <p>
+            Proyecto 2 · Servidor Web · GNU/Linux
+        </p>
+
+        <p class="footer-tech">
+            Alex · Deportes
+        </p>
+
     </footer>
 
+
 </body>
+
 </html>

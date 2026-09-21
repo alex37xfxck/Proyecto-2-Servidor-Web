@@ -3,16 +3,16 @@
    1.  Variables y reset
    2.  Fondo decorativo
    3.  Navbar
-   4.  Hero (inicio)
-   5.  Equipo (inicio)
+   4.  Hero e inicio
+   5.  Tarjetas de equipo
    6.  Footer
    7.  Responsive de inicio
-   8.  Páginas internas / Spotify
+   8.  Páginas internas y Spotify
    9.  Artistas
-   10. Canciones
-   11. Botón final: volver al perfil
-   12. Responsive de páginas internas
-   13. Accesibilidad
+   10. Canciones y recientes
+   11. Responsive general
+   12. Accesibilidad
+   13. Deportes
    ========================================================= */
 
 
@@ -22,8 +22,6 @@
 
 :root {
     --bg-main: #070b14;
-    --bg-secondary: #0d1320;
-
     --text-primary: #f5f7ff;
     --text-secondary: #98a2b3;
 
@@ -67,7 +65,6 @@ body {
         radial-gradient(circle at bottom right, rgba(95, 70, 255, 0.10), transparent 35%),
         var(--bg-main);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     overflow-x: clip;
 }
 
@@ -917,43 +914,6 @@ h1, h2 {
 
 
 /* =========================================================
-   11. BOTÓN FINAL: VOLVER AL PERFIL
-   Es el .back-link que va como hijo directo de <main>,
-   al final de la página (el del navbar no se ve afectado).
-   ========================================================= */
-
-main > .back-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: fit-content;
-    margin: 32px auto 40px;
-    padding: 11px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.045);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition:
-        background 0.18s ease,
-        border-color 0.18s ease,
-        color 0.18s ease,
-        transform 0.18s ease;
-}
-
-main > .back-link:hover {
-    background: rgba(77, 163, 255, 0.08);
-    border-color: rgba(77, 163, 255, 0.25);
-    color: var(--text-primary);
-    transform: translateY(-2px);
-}
-
-
-/* =========================================================
    12. RESPONSIVE DE PÁGINAS INTERNAS
    ========================================================= */
 
@@ -1050,7 +1010,7 @@ main > .back-link:hover {
 
 
 /* =========================================================
-   13. ACCESIBILIDAD
+   12. ACCESIBILIDAD
    ========================================================= */
 
 :focus-visible {
@@ -1074,5 +1034,1061 @@ main > .back-link:hover {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================================================
+   13. DEPORTES
+   ========================================================= */
+
+.sports-hero {
+    padding-bottom: 55px;
+}
+
+.sports-section {
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+.sports-section-heading {
+    margin-bottom: 28px;
+}
+
+.sports-section-heading .section-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.sports-section-heading h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    line-height: 1.15;
+}
+
+.sports-section-heading p {
+    max-width: 700px;
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DEPORTES DE INTERÉS
+   ========================================================= */
+
+.favorite-sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.favorite-sport-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.025)
+    );
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.favorite-sport-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(77, 163, 255, 0.35);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.30);
+}
+
+.favorite-sport-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent),
+        transparent
+    );
+    opacity: 0.65;
+}
+
+.favorite-sport-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 170px;
+    padding: 22px;
+    background: radial-gradient(
+        circle at center,
+        rgba(77, 163, 255, 0.13),
+        rgba(77, 163, 255, 0.02) 45%,
+        transparent 75%
+    );
+}
+
+.favorite-sport-image::before {
+    content: "";
+    position: absolute;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.favorite-sport-image img {
+    position: relative;
+    z-index: 1;
+    width: 108px;
+    height: 108px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.22));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.favorite-sport-card:hover .favorite-sport-image img {
+    transform: scale(1.10);
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.28));
+}
+
+.favorite-sport-content {
+    padding: 18px 20px 21px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sport-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: rgba(77, 163, 255, 0.09);
+    border: 1px solid rgba(77, 163, 255, 0.14);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.favorite-sport-content h3 {
+    margin: 0 0 7px;
+    font-size: 1.22rem;
+    line-height: 1.2;
+}
+
+.favorite-sport-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.favorite-sport-card:first-child {
+    border-color: rgba(77, 163, 255, 0.23);
+}
+
+.favorite-sport-card:first-child .sport-number {
+    background: rgba(29, 185, 84, 0.10);
+    border-color: rgba(29, 185, 84, 0.18);
+    color: var(--spotify);
+}
+
+
+/* =========================================================
+   DEPORTES QUE HE REALIZADO
+   ========================================================= */
+
+.sports-experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.sport-experience-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 24px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.025)
+    );
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    text-align: center;
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.sport-experience-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(77, 163, 255, 0.28);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
+}
+
+.sport-circle {
+    --percent: 70;
+    width: 155px;
+    height: 155px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--accent) calc(var(--percent) * 1%),
+        rgba(255, 255, 255, 0.08) 0
+    );
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.sport-circle::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: #0b111b;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sport-circle-inner {
+    position: relative;
+    z-index: 1;
+    width: 118px;
+    height: 118px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sport-circle-inner img {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.22));
+    transition: transform 0.3s ease;
+}
+
+.sport-experience-card:hover .sport-circle-inner img {
+    transform: scale(1.08);
+}
+
+.sport-experience-content {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sport-percent {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.sport-experience-content h3 {
+    margin: 0 0 5px;
+    font-size: 1.22rem;
+    line-height: 1.25;
+}
+
+.sport-experience-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.experience-bar {
+    width: 100%;
+    height: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.experience-bar span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        #76b8ff
+    );
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.18);
+    transition: width 0.5s ease;
+}
+
+
+/* =========================================================
+   COLLAGE DE EQUIPOS Y DEPORTISTAS
+   ========================================================= */
+
+.sports-collage {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    grid-template-rows:
+        repeat(4, 170px);
+
+    grid-template-areas:
+        "barcelona barcelona messi quinones"
+        "barcelona barcelona haaland mbappe"
+        "lazyboy sergio haaland mbappe"
+        "lazyboy sergio iverson mbappe";
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   ELEMENTOS
+   ========================================================= */
+
+.collage-item {
+    position: relative;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    background: #0d131e;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   DISTRIBUCIÓN
+   ========================================================= */
+
+.collage-barcelona {
+    grid-area: barcelona;
+}
+
+.collage-messi {
+    grid-area: messi;
+}
+
+.collage-quinones {
+    grid-area: quinones;
+}
+
+.collage-haaland {
+    grid-area: haaland;
+}
+
+.collage-mbappe {
+    grid-area: mbappe;
+}
+
+.collage-lazyboy {
+    grid-area: lazyboy;
+}
+
+.collage-sergio {
+    grid-area: sergio;
+}
+
+.collage-iverson {
+    grid-area: iverson;
+}
+
+
+/* =========================================================
+   IMAGEN DEL COLLAGE
+   ========================================================= */
+
+.collage-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: transparent;
+}
+
+.collage-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+
+/* =========================================================
+   HOVER DEL COLLAGE
+   La vista ampliada se adapta a la proporción real
+   de cada imagen, evitando márgenes artificiales.
+   ========================================================= */
+
+@media (hover: hover) {
+
+    /* La tarjeta deja de mostrar su marco original */
+    .collage-item:hover {
+        overflow: visible;
+
+        border-color: transparent;
+        background: transparent;
+
+        box-shadow: none;
+
+        transform: none;
+
+        z-index: 50;
+    }
+
+
+    /* La imagen ampliada se convierte en una
+       ventana flotante que se ajusta a su contenido */
+    .collage-item:hover .collage-image {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        width: fit-content;
+        height: fit-content;
+
+        max-width: 72vw;
+        max-height: 70vh;
+
+        overflow: visible;
+
+        padding: 0;
+
+        background: transparent;
+
+        transform: translate(-50%, -50%);
+
+        z-index: 10;
+    }
+
+
+    /* La imagen conserva su proporción real */
+    .collage-item:hover .collage-image img {
+        position: relative;
+
+        display: block;
+
+        width: auto;
+        height: auto;
+
+        max-width: min(520px, 72vw);
+        max-height: min(380px, 70vh);
+
+        object-fit: contain;
+
+        border-radius: 16px;
+
+        box-shadow:
+            0 24px 55px rgba(0, 0, 0, 0.55);
+
+        filter:
+            brightness(0.92)
+            drop-shadow(
+                0 15px 30px rgba(0, 0, 0, 0.35)
+            );
+
+        transform: none;
+    }
+
+
+    /* =====================================================
+       TEXTO
+       
+       El texto permanece dentro de la imagen ampliada,
+       no en la tarjeta original.
+       ===================================================== */
+
+    .collage-item:hover .collage-overlay {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding: 20px 22px 22px;
+
+        border-radius:
+            0 0 16px 16px;
+
+        background:
+            linear-gradient(
+                to top,
+                rgba(4, 8, 14, 0.95) 0%,
+                rgba(4, 8, 14, 0.78) 45%,
+                rgba(4, 8, 14, 0.15) 100%
+            );
+
+        opacity: 1;
+
+        transform: none;
+
+        z-index: 20;
+
+        pointer-events: none;
+    }
+
+
+    /* Tipo */
+    .collage-item:hover .collage-overlay span {
+        margin-bottom: 5px;
+
+        color: var(--accent);
+
+        font-size: 0.64rem;
+        font-weight: 800;
+
+        letter-spacing: 0.12em;
+    }
+
+
+    /* Nombre */
+    .collage-item:hover .collage-overlay h3 {
+        margin: 0 0 6px;
+
+        color: #fff;
+
+        font-size: 1.15rem;
+        line-height: 1.2;
+    }
+
+
+    /* Descripción */
+    .collage-item:hover .collage-overlay p {
+        margin: 0;
+
+        max-width: 430px;
+
+        color:
+            rgba(255, 255, 255, 0.80);
+
+        font-size: 0.78rem;
+
+        line-height: 1.45;
+    }
+
+}
+
+/* =========================================================
+   INFORMACIÓN
+   ========================================================= */
+
+.collage-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(4, 8, 14, 0.95),
+            rgba(4, 8, 14, 0.75) 55%,
+            transparent
+        );
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+.collage-overlay span {
+    margin-bottom: 5px;
+
+    color: var(--accent);
+
+    font-size: 0.64rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+.collage-overlay h3 {
+    margin: 0 0 6px;
+
+    color: #fff;
+
+    font-size: 1.08rem;
+    line-height: 1.2;
+}
+
+.collage-overlay p {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 0.76rem;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .sports-collage {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        grid-template-rows:
+            repeat(6, 190px);
+
+        grid-template-areas:
+            "barcelona barcelona"
+            "barcelona barcelona"
+            "messi quinones"
+            "haaland mbappe"
+            "lazyboy sergio"
+            "iverson iverson";
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sports-collage {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            repeat(8, 230px);
+
+        grid-template-areas:
+            "barcelona"
+            "messi"
+            "quinones"
+            "haaland"
+            "mbappe"
+            "lazyboy"
+            "sergio"
+            "iverson";
+    }
+
+    .collage-overlay {
+        opacity: 1;
+
+        transform: translateY(0);
+
+        padding: 16px;
+    }
+
+}
+
+/* =========================================================
+   COLLAGE DE EFRA
+   Solo tiene dos referentes, por lo que se muestran
+   centrados y con mayor tamaño.
+   ========================================================= */
+
+.efra-collage {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    grid-template-rows:
+        300px;
+
+    grid-template-areas:
+        none;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    gap: 14px;
+}
+
+
+/* Evita que las clases antiguas del collage
+   intenten modificar la posición */
+.efra-collage .collage-item {
+
+    grid-area: auto;
+}
+
+
+/* Responsive */
+@media (max-width: 700px) {
+
+    .efra-collage {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            repeat(2, 280px);
+
+        max-width: 450px;
+    }
+
+}
+
+
+/* =========================================================
+   COLLAGE DE DOS ELEMENTOS
+   ========================================================= */
+
+.two-item-collage {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    grid-template-rows:
+        320px;
+
+    gap: 14px;
+
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+
+/* En pantallas pequeñas se apilan */
+@media (max-width: 700px) {
+
+    .two-item-collage {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            repeat(2, 280px);
+
+        max-width: 450px;
+    }
+
+}
+
+/* =========================================================
+   AVATARES CON FOTOGRAFÍA
+   ========================================================= */
+
+.avatar-photo {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 74px;
+    height: 74px;
+
+    padding: 0;
+
+    overflow: visible;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(77, 163, 255, 0.18),
+            rgba(30, 70, 130, 0.12)
+        );
+
+    border:
+        1px solid rgba(77, 163, 255, 0.30);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.avatar-photo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -4px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(77, 163, 255, 0.14);
+
+    pointer-events: none;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.avatar-photo img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border:
+        2px solid rgba(10, 16, 28, 0.85);
+
+    transition:
+        transform 0.30s ease,
+        filter 0.30s ease;
+}
+
+
+/* =========================================================
+   EFECTO HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+
+    .team-card:hover .avatar-photo {
+
+        transform:
+            translateY(-4px)
+            scale(1.06);
+
+        border-color:
+            rgba(77, 163, 255, 0.55);
+
+        box-shadow:
+            0 14px 32px rgba(0, 0, 0, 0.35);
+    }
+
+
+    .team-card:hover .avatar-photo::before {
+
+        transform:
+            scale(1.15);
+
+        opacity: 0.9;
+    }
+
+
+    .team-card:hover .avatar-photo img {
+
+        transform:
+            scale(1.05);
+
+        filter:
+            brightness(1.05)
+            saturate(1.05);
+    }
+
+}
+
+/* =========================================================
+   AJUSTES FINALES - PÁGINA PRINCIPAL
+   ========================================================= */
+
+/* Sección del equipo */
+.team-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 24px 100px;
+}
+
+/* Encabezado centrado */
+.team-section .section-heading {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.team-section .section-heading h2 {
+    margin-bottom: 14px;
+}
+
+/* Tarjetas del equipo */
+.team-grid {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.team-card {
+    position: relative;
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: 22px;
+}
+
+.team-card .card-description {
+    margin-bottom: 20px;
+}
+
+.team-card .card-links {
+    margin-top: auto;
+}
+
+/* Avatar con fotografía */
+.avatar-photo {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 18px;
+}
+
+/* Hover de la tarjeta */
+@media (hover: hover) {
+    .team-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(77, 163, 255, 0.32);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* Deportes centrados */
+.favorite-sports-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.favorite-sport-card {
+    width: 320px;
+}
+
+.sports-experience-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.sport-experience-card {
+    width: min(100%, 320px);
+    margin: 0;
+}
+
+/* Responsive final de inicio */
+@media (max-width: 800px) {
+    .team-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 500px) {
+    .team-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .team-card {
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .team-section .section-heading {
+        margin-bottom: 36px;
     }
 }
