@@ -16,8 +16,6 @@
 
     <!-- =====================================================
          NAVEGACIÓN
-         Esta barra se mantiene igual en las páginas de todos
-         los integrantes.
          ===================================================== -->
     <header class="navbar">
 
@@ -46,112 +44,90 @@
 
         <!-- =================================================
              ENCABEZADO
-             Aquí se identifica al integrante y la sección.
              ================================================= -->
         <section class="hero">
 
-            <!-- Nombre del integrante -->
             <span class="eyebrow">
                 ALEX · TEMA LIBRE
             </span>
 
-            <!-- Título -->
             <h1>
-                Tema libre
+                SuperCars Legendarios
             </h1>
 
-            <!-- Introducción -->
             <p>
-                En esta sección se desarrollará un tema de
-                interés personal.
+                Un recorrido visual por tres de los autos más
+                impresionantes del mundo: Porsche, Bugatti y Lamborghini.
             </p>
 
         </section>
 
 
         <!-- =================================================
-             CONTENIDO DEL TEMA LIBRE
-             
-             ESTA PARTE ES LA QUE DESARROLLARÁ TU COMPAÑERA.
+             CARRUSEL DE AUTOS
+             ================================================= -->
+        <section class="contenedor-carrusel">
 
-             Puede cambiar completamente:
-             - cantidad de tarjetas
-             - títulos
-             - textos
-             - imágenes
-             - colores
-             - distribución
-             - animaciones
-             - estructura interna
+            <!-- Panel Porsche -->
+            <div class="panel panel-porsche" onclick="abrirModal('modal-porsche')">
+                <h2>Porsche GT3 RS</h2>
+            </div>
 
-             Lo importante es mantener esta sección dentro
-             del <main> y conservar la navegación general.
+            <!-- Panel Bugatti -->
+            <div class="panel panel-bugatti" onclick="abrirModal('modal-bugatti')">
+                <h2>Bugatti Chiron</h2>
+            </div>
+
+            <!-- Panel Lamborghini -->
+            <div class="panel panel-lambo" onclick="abrirModal('modal-lambo')">
+                <h2>Lamborghini Revuelto</h2>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECCIÓN DE SUBTEMAS (Historia, Tecnología, Cultura)
              ================================================= -->
         <section class="member-grid">
 
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 1
-                 ================================================= -->
+            <!-- Subtema 1: Historia -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    ✨
-                </div>
-
-                <h2>
-                    Subtema 1
-                </h2>
-
+                <div class="card-icon">🏁</div>
+                <h2>Historia</h2>
                 <p>
-                    Espacio reservado para desarrollar el primer
-                    apartado del tema elegido.
+                    Los supercars nacieron en los años 60 con modelos como el
+                    Lamborghini Miura, considerado el primer supercar moderno
+                    por su motor central trasero. Desde entonces, marcas como
+                    Ferrari, Porsche y Bugatti han redefinido los límites de
+                    la velocidad y el diseño.
                 </p>
-
             </article>
 
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 2
-                 ================================================= -->
+            <!-- Subtema 2: Tecnología -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    📌
-                </div>
-
-                <h2>
-                    Subtema 2
-                </h2>
-
+                <div class="card-icon">⚙️</div>
+                <h2>Tecnología</h2>
                 <p>
-                    Espacio reservado para desarrollar el segundo
-                    apartado del tema elegido.
+                    Hoy en día los supercars combinan motores híbridos,
+                    aerodinámica activa, chasis de fibra de carbono y sistemas
+                    de suspensión adaptativa. El Lamborghini Revuelto, por
+                    ejemplo, une un V12 con tres motores eléctricos para
+                    alcanzar más de 1,000 CV.
                 </p>
-
             </article>
 
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 3
-                 ================================================= -->
+            <!-- Subtema 3: Impacto Cultural -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    💡
-                </div>
-
-                <h2>
-                    Subtema 3
-                </h2>
-
+                <div class="card-icon">🌍</div>
+                <h2>Impacto Cultural</h2>
                 <p>
-                    Espacio reservado para desarrollar el tercer
-                    apartado del tema elegido.
+                    Estos autos son íconos de la cultura pop: aparecen en
+                    películas como Rápido y Furioso, en videojuegos como
+                    Need for Speed y Forza, y son símbolo de estatus y
+                    pasión por el automovilismo en todo el mundo.
                 </p>
-
             </article>
-
 
         </section>
 
@@ -172,6 +148,86 @@
         </p>
 
     </footer>
+
+
+    <!-- =====================================================
+         MODALES CON ESPECIFICACIONES DE CADA AUTO
+         ===================================================== -->
+
+    <!-- MODAL PORSCHE -->
+    <div id="modal-porsche" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('modal-porsche')">&times;</span>
+            <h3>Porsche 911 GT3 RS</h3>
+            <p><strong>Motor:</strong> 4.0L Flat-6 atmosférico</p>
+            <p><strong>Potencia:</strong> 525 CV</p>
+            <p><strong>Aceleración (0-100 km/h):</strong> 3.2 segundos</p>
+            <p><strong>Velocidad Máxima:</strong> 296 km/h</p>
+            <p><strong>Transmisión:</strong> PDK de 7 velocidades</p>
+            <p>
+                El GT3 RS es la expresión máxima del rendimiento en pista,
+                con aerodinámica activa (DRS), suspensión optimizada y un
+                motor que sube hasta las 9,000 RPM.
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL BUGATTI -->
+    <div id="modal-bugatti" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('modal-bugatti')">&times;</span>
+            <h3>Bugatti Chiron</h3>
+            <p><strong>Motor:</strong> 8.0L W16 Quad-Turbo</p>
+            <p><strong>Potencia:</strong> 1,500 CV</p>
+            <p><strong>Aceleración (0-100 km/h):</strong> 2.4 segundos</p>
+            <p><strong>Velocidad Máxima:</strong> 420 km/h (limitada)</p>
+            <p><strong>Transmisión:</strong> DSG de 7 velocidades</p>
+            <p>
+                Una obra maestra de la ingeniería que combina lujo extremo
+                con una potencia brutal. Es uno de los autos de producción
+                más rápidos y exclusivos del mundo.
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL LAMBORGHINI -->
+    <div id="modal-lambo" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('modal-lambo')">&times;</span>
+            <h3>Lamborghini Revuelto</h3>
+            <p><strong>Motor:</strong> V12 6.5L + 3 Motores Eléctricos (Híbrido)</p>
+            <p><strong>Potencia:</strong> 1,015 CV</p>
+            <p><strong>Aceleración (0-100 km/h):</strong> 2.5 segundos</p>
+            <p><strong>Velocidad Máxima:</strong> 350 km/h</p>
+            <p><strong>Transmisión:</strong> Automática de doble embrague de 8 velocidades</p>
+            <p>
+                El sucesor del Aventador y el primer HPEV de Lamborghini,
+                combinando el legendario V12 con potencia eléctrica para
+                un rendimiento sin precedentes.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPT PARA ABRIR Y CERRAR LOS MODALES
+         ===================================================== -->
+    <script>
+        function abrirModal(idModal) {
+            document.getElementById(idModal).style.display = 'flex';
+        }
+
+        function cerrarModal(idModal) {
+            document.getElementById(idModal).style.display = 'none';
+        }
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 

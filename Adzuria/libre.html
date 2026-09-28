@@ -4,175 +4,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título de la página -->
-    <title>ZU | Tema libre</title>
-
-    <!-- Hoja de estilos general del proyecto -->
+    <title>Adzuria | Tema libre</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .adzuria-carrusel {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 80vh !important;
+            min-height: 550px !important;
+            margin: 40px 0 !important;
+            overflow: hidden !important;
+        }
+        .adzuria-panel {
+            position: absolute !important;
+            top: 0 !important;
+            width: 38vw !important;
+            height: 100% !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            cursor: pointer !important;
+            transition: all 0.4s ease !important;
+            clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%) !important;
+            display: flex !important;
+            align-items: flex-end !important;
+            justify-content: center !important;
+            padding-bottom: 60px !important;
+            box-sizing: border-box !important;
+        }
+        .adzuria-panel:hover {
+            filter: brightness(1.15) !important;
+            transform: scale(1.03) translateY(-8px) !important;
+            z-index: 10 !important;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.25) !important;
+        }
+        .adzuria-panel h2 {
+            font-size: 1.5rem !important;
+            text-transform: uppercase !important;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9) !important;
+            margin: 0 !important;
+            pointer-events: none !important;
+            background: rgba(0,0,0,0.65) !important;
+            padding: 12px 24px !important;
+            border-radius: 6px !important;
+            letter-spacing: 2px !important;
+            color: #fff !important;
+            font-weight: bold !important;
+            white-space: nowrap !important;
+        }
+        .adzuria-biblioteca {
+            left: 0% !important;
+            background-image: url('../img/Adzuria_temalibre/biblioteca.jpg') !important;
+            z-index: 1 !important;
+        }
+        .adzuria-serial {
+            left: 31% !important;
+            background-image: url('../img/Adzuria_temalibre/serial_killer.jpg') !important;
+            z-index: 2 !important;
+        }
+        .adzuria-eleanor {
+            left: 62% !important;
+            background-image: url('../img/Adzuria_temalibre/eleanor_park.jpg') !important;
+            z-index: 3 !important;
+        }
+        .adzuria-modal {
+            display: none;
+            position: fixed !important;
+            z-index: 9999 !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(0,0,0,0.85) !important;
+            backdrop-filter: blur(6px) !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+        .adzuria-modal-contenido {
+            background: linear-gradient(135deg, #1a1a1a, #333) !important;
+            padding: 40px !important;
+            border-radius: 15px !important;
+            width: 90% !important;
+            max-width: 600px !important;
+            border: 1px solid #555 !important;
+            box-shadow: 0 0 60px rgba(0,0,0,0.7) !important;
+            position: relative !important;
+            color: #fff !important;
+            max-height: 85vh !important;
+            overflow-y: auto !important;
+        }
+        .adzuria-cerrar {
+            position: absolute !important;
+            top: 10px !important;
+            right: 20px !important;
+            color: #aaa !important;
+            font-size: 34px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+        }
+        .adzuria-cerrar:hover { color: #fff !important; }
+        .adzuria-modal h3 {
+            color: #f1c40f !important;
+            font-size: 1.8rem !important;
+            margin: 0 0 20px 0 !important;
+            text-transform: uppercase !important;
+        }
+        .adzuria-modal p {
+            color: #ddd !important;
+            line-height: 1.6 !important;
+            font-size: 1rem !important;
+            margin: 8px 0 !important;
+        }
+        .adzuria-modal strong { color: #fff !important; }
+        @media (max-width: 900px) {
+            .adzuria-carrusel {
+                height: auto !important;
+                min-height: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 20px 0 !important;
+            }
+            .adzuria-panel {
+                position: relative !important;
+                width: 95% !important;
+                height: 300px !important;
+                left: 0 !important;
+                margin: -30px auto 0 auto !important;
+                clip-path: polygon(0% 12%, 100% 0%, 100% 88%, 0% 100%) !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         NAVEGACIÓN
-         Esta barra se mantiene igual en las páginas de todos
-         los integrantes.
-         ===================================================== -->
     <header class="navbar">
-
         <div class="nav-container">
-
-            <!-- Nombre / logo del proyecto -->
             <a href="../index.html" class="logo">
                 <span class="logo-symbol">&lt;/&gt;</span>
                 <span>Proyecto 2</span>
             </a>
-
-            <!-- Regresa directamente al índice principal -->
-            <a href="../index.html" class="back-link">
-                ← Proyecto
-            </a>
-
+            <a href="../index.html" class="back-link">← Proyecto</a>
         </div>
-
     </header>
 
-
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-         ===================================================== -->
     <main class="container">
-
-        <!-- =================================================
-             ENCABEZADO
-             Aquí se identifica al integrante y la sección.
-             ================================================= -->
         <section class="hero">
-
-            <!-- Nombre del integrante -->
-            <span class="eyebrow">
-                ZU · TEMA LIBRE
-            </span>
-
-            <!-- Título -->
-            <h1>
-                Tema libre
-            </h1>
-
-            <!-- Introducción -->
-            <p>
-                En esta sección se desarrollará un tema de
-                interés personal.
-            </p>
-
+            <span class="eyebrow">ADZURIA · TEMA LIBRE</span>
+            <h1>Top 3 Libros Favoritos</h1>
+            <p>Tres historias que me marcaron: fantasía, thriller y romance. Cada uno en su propio universo.</p>
         </section>
 
+        <section class="adzuria-carrusel">
+            <div class="adzuria-panel adzuria-biblioteca" onclick="abrirModal('modal-biblioteca')">
+                <h2>La Biblioteca de la Medianoche</h2>
+            </div>
+            <div class="adzuria-panel adzuria-serial" onclick="abrirModal('modal-serial')">
+                <h2>No Soy un Serial Killer</h2>
+            </div>
+            <div class="adzuria-panel adzuria-eleanor" onclick="abrirModal('modal-eleanor')">
+                <h2>Eleanor y Park</h2>
+            </div>
+        </section>
 
-        <!-- =================================================
-             CONTENIDO DEL TEMA LIBRE
-             
-             ESTA PARTE ES LA QUE DESARROLLARÁ TU COMPAÑERA.
-
-             Puede cambiar completamente:
-             - cantidad de tarjetas
-             - títulos
-             - textos
-             - imágenes
-             - colores
-             - distribución
-             - animaciones
-             - estructura interna
-
-             Lo importante es mantener esta sección dentro
-             del <main> y conservar la navegación general.
-             ================================================= -->
         <section class="member-grid">
-
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 1
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    ✨
-                </div>
-
-                <h2>
-                    Subtema 1
-                </h2>
-
-                <p>
-                    Espacio reservado para desarrollar el primer
-                    apartado del tema elegido.
-                </p>
-
+                <div class="card-icon">🌌</div>
+                <h2>Fantasía y Filosofía</h2>
+                <p>La Biblioteca de la Medianoche mezcla lo fantástico con lo filosófico: ¿qué pasaría si pudieras vivir todas las vidas que no elegiste? Una lectura que invita a reflexionar sobre el arrepentimiento y la aceptación.</p>
             </article>
-
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 2
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    📌
-                </div>
-
-                <h2>
-                    Subtema 2
-                </h2>
-
-                <p>
-                    Espacio reservado para desarrollar el segundo
-                    apartado del tema elegido.
-                </p>
-
+                <div class="card-icon">🔪</div>
+                <h2>Thriller y Terror</h2>
+                <p>No Soy un Serial Killer es una saga que juega con la mente del lector. Su protagonista, John Cleaver, es un adolescente sociópata que decide cazar monstruos. Una mezcla perfecta de psicología, horror y coming-of-age.</p>
             </article>
-
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 3
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    💡
-                </div>
-
-                <h2>
-                    Subtema 3
-                </h2>
-
-                <p>
-                    Espacio reservado para desarrollar el tercer
-                    apartado del tema elegido.
-                </p>
-
+                <div class="card-icon">💖</div>
+                <h2>Romance y Drama</h2>
+                <p>Eleanor y Park es una historia de primer amor, pero también de bullying, disfunción familiar y encontrar tu lugar en el mundo. Ambientada en los 80s, con una banda sonora que acompaña cada página.</p>
             </article>
-
-
         </section>
-
     </main>
 
-
-    <!-- =====================================================
-         PIE DE PÁGINA
-         ===================================================== -->
     <footer class="footer">
-
-        <p>
-            Proyecto 2 · Servidor Web · GNU/Linux
-        </p>
-
-        <p class="footer-tech">
-            ZU · Tema libre
-        </p>
-
+        <p>Proyecto 2 · Servidor Web · GNU/Linux</p>
+        <p class="footer-tech">Adzuria · Tema libre</p>
     </footer>
 
-</body>
+    <div id="modal-biblioteca" class="adzuria-modal">
+        <div class="adzuria-modal-contenido">
+            <span class="adzuria-cerrar" onclick="cerrarModal('modal-biblioteca')">&times;</span>
+            <h3>La Biblioteca de la Medianoche</h3>
+            <p><strong>Autor:</strong> Matt Haig</p>
+            <p><strong>Año:</strong> 2020</p>
+            <p><strong>Género:</strong> Ficción contemporánea / Fantasía filosófica</p>
+            <p><strong>Protagonista:</strong> Nora Seed</p>
+            <p><strong>Traducido a más de 40 idiomas</strong></p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p>Entre la vida y la muerte hay una biblioteca donde cada libro representa una vida que pudiste haber vivido. Nora debe elegir cuál quiere vivir realmente.</p>
+        </div>
+    </div>
 
+    <div id="modal-serial" class="adzuria-modal">
+        <div class="adzuria-modal-contenido">
+            <span class="adzuria-cerrar" onclick="cerrarModal('modal-serial')">&times;</span>
+            <h3>No Soy un Serial Killer (Saga Completa)</h3>
+            <p><strong>Autor:</strong> Dan Wells</p>
+            <p><strong>Año:</strong> 2009 (primer libro)</p>
+            <p><strong>Género:</strong> Thriller psicológico / Terror juvenil</p>
+            <p><strong>Protagonista:</strong> John Wayne Cleaver</p>
+            <p><strong>Nominado al Premio Hugo 2010</strong></p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p>Un adolescente sociópata sabe que podría volverse un asesino, así que decide usar sus impulsos para cazar monstruos reales. Una saga que mezcla horror con psicología profunda.</p>
+        </div>
+    </div>
+
+    <div id="modal-eleanor" class="adzuria-modal">
+        <div class="adzuria-modal-contenido">
+            <span class="adzuria-cerrar" onclick="cerrarModal('modal-eleanor')">&times;</span>
+            <h3>Eleanor y Park</h3>
+            <p><strong>Autora:</strong> Rainbow Rowell</p>
+            <p><strong>Año:</strong> 2013</p>
+            <p><strong>Género:</strong> Romance juvenil / Coming-of-age</p>
+            <p><strong>Narración:</strong> Alterna entre Eleanor y Park</p>
+            <p><strong>Goodreads Choice Award 2013</strong></p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p>Eleanor y Park se conocen en el autobús escolar en los años 80. Entre mix tapes, cómics y silencios incómodos, nace una historia de primer amor que también habla de bullying, familia y encontrar tu lugar.</p>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function cerrarModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(e) {
+            if (e.target.classList.contains('adzuria-modal')) e.target.style.display = 'none';
+        }
+    </script>
+</body>
 </html>

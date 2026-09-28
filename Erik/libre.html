@@ -4,174 +4,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título de la página -->
     <title>Erik | Tema libre</title>
-
-    <!-- Hoja de estilos general del proyecto -->
     <link rel="stylesheet" href="../style.css">
+
+    <!-- =====================================================
+         CSS ESPECÍFICO DE ERIK - Clases únicas (erik-*)
+         para no chocar con el CSS global del proyecto
+         ===================================================== -->
+    <style>
+    .erik-carrusel {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 80vh !important;
+    min-height: 550px !important;
+    margin: 40px 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+
+.erik-panel {
+    position: absolute !important;
+    top: 0 !important;
+    width: 45vw !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding-bottom: 60px !important;
+    box-sizing: border-box !important;
+}
+
+.erik-panel:hover {
+    filter: brightness(1.15) !important;
+    transform: scale(1.03) translateY(-8px) !important;
+    z-index: 10 !important;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.25) !important;
+}
+
+        .erik-osu {
+    left: 0% !important;
+    background-image: url('../img/Erik_temalibre/osu.jpg') !important;
+    z-index: 1 !important;
+}
+.erik-valorant {
+    left: 31% !important;
+    background-image: url('../img/Erik_temalibre/valorant.jpg') !important;
+    z-index: 2 !important;
+}
+.erik-silenthill {
+    left: 62% !important;
+    background-image: url('../img/Erik_temalibre/silent_hill.jpg') !important;
+    z-index: 3 !important;
+}
+
+        .erik-osu {
+    left: -10% !important;
+    background-image: url('../img/Erik_temalibre/osu.jpg') !important;
+    z-index: 1 !important;
+}
+
+.erik-valorant {
+    left: 27.5% !important;
+    background-image: url('../img/Erik_temalibre/valorant.jpg') !important;
+    z-index: 2 !important;
+}
+
+.erik-silenthill {
+    left: 65% !important;
+    background-image: url('../img/Erik_temalibre/silent_hill.jpg') !important;
+    z-index: 3 !important;
+}
+
+        /* Modales exclusivos de Erik */
+        .erik-modal {
+            display: none;
+            position: fixed !important;
+            z-index: 9999 !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(6px) !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+
+        .erik-modal-contenido {
+            background: linear-gradient(135deg, #1a1a1a, #333) !important;
+            padding: 40px !important;
+            border-radius: 15px !important;
+            width: 90% !important;
+            max-width: 600px !important;
+            border: 1px solid #555 !important;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.7) !important;
+            position: relative !important;
+            animation: erikAparecer 0.3s ease-out !important;
+            color: #fff !important;
+            box-sizing: border-box !important;
+            max-height: 85vh !important;
+            overflow-y: auto !important;
+        }
+
+        @keyframes erikAparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .erik-cerrar {
+            position: absolute !important;
+            top: 10px !important;
+            right: 20px !important;
+            color: #aaa !important;
+            font-size: 34px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            line-height: 1 !important;
+            background: none !important;
+            border: none !important;
+        }
+
+        .erik-cerrar:hover {
+            color: #fff !important;
+        }
+
+        .erik-modal h3 {
+            color: #f1c40f !important;
+            font-size: 1.8rem !important;
+            margin: 0 0 20px 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+
+        .erik-modal p {
+            color: #ddd !important;
+            line-height: 1.6 !important;
+            font-size: 1rem !important;
+            margin: 8px 0 !important;
+        }
+
+        .erik-modal strong {
+            color: #fff !important;
+        }
+
+        /* Responsive Erik */
+        @media (max-width: 900px) {
+            .erik-carrusel {
+                height: auto !important;
+                min-height: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 20px 0 !important;
+            }
+
+            .erik-panel {
+                position: relative !important;
+                width: 95% !important;
+                height: 300px !important;
+                left: 0 !important;
+                top: 0 !important;
+                margin: -30px auto 0 auto !important;
+                clip-path: polygon(0% 12%, 100% 0%, 100% 88%, 0% 100%) !important;
+            }
+
+            .erik-panel h2 {
+                font-size: 1.2rem !important;
+                padding: 8px 16px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         NAVEGACIÓN
-         Esta barra se mantiene igual en las páginas de todos
-         los integrantes.
-         ===================================================== -->
+    <!-- NAVEGACIÓN -->
     <header class="navbar">
-
         <div class="nav-container">
-
-            <!-- Nombre / logo del proyecto -->
             <a href="../index.html" class="logo">
                 <span class="logo-symbol">&lt;/&gt;</span>
                 <span>Proyecto 2</span>
             </a>
-
-            <!-- Regresa directamente al índice principal -->
             <a href="../index.html" class="back-link">
                 ← Proyecto
             </a>
-
         </div>
-
     </header>
 
-
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-         ===================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="container">
 
-        <!-- =================================================
-             ENCABEZADO
-             Aquí se identifica al integrante y la sección.
-             ================================================= -->
+        <!-- ENCABEZADO -->
         <section class="hero">
-
-            <!-- Nombre del integrante -->
-            <span class="eyebrow">
-                Erik · TEMA LIBRE
-            </span>
-
-            <!-- Título -->
-            <h1>
-                Tema libre
-            </h1>
-
-            <!-- Introducción -->
+            <span class="eyebrow">ERIK · TEMA LIBRE</span>
+            <h1>Top 3 Videojuegos</h1>
             <p>
-                En esta sección se desarrollará un tema de
-                interés personal.
+                Un recorrido por los tres títulos que más me han marcado:
+                osu!, Valorant y Silent Hill 2.
             </p>
-
         </section>
 
+        <!-- CARRUSEL DE JUEGOS -->
+        <section class="erik-carrusel">
+            <div class="erik-panel erik-osu" onclick="abrirModal('modal-osu')">
+                <h2>osu!</h2>
+            </div>
+            <div class="erik-panel erik-valorant" onclick="abrirModal('modal-valorant')">
+                <h2>Valorant</h2>
+            </div>
+            <div class="erik-panel erik-silenthill" onclick="abrirModal('modal-silenthill')">
+                <h2>Silent Hill 2</h2>
+            </div>
+        </section>
 
-        <!-- =================================================
-             CONTENIDO DEL TEMA LIBRE
-             
-             ESTA PARTE ES LA QUE DESARROLLARÁ TU COMPAÑERA.
-
-             Puede cambiar completamente:
-             - cantidad de tarjetas
-             - títulos
-             - textos
-             - imágenes
-             - colores
-             - distribución
-             - animaciones
-             - estructura interna
-
-             Lo importante es mantener esta sección dentro
-             del <main> y conservar la navegación general.
-             ================================================= -->
+        <!-- SUBTEMAS -->
         <section class="member-grid">
-
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 1
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    ✨
-                </div>
-
-                <h2>
-                    Subtema 1
-                </h2>
-
+                <div class="card-icon">🎵</div>
+                <h2>Ritmo y Precisión</h2>
                 <p>
-                    Espacio reservado para desarrollar el primer
-                    apartado del tema elegido.
+                    osu! es el rey de mis horas jugadas con más de 320 horas.
+                    Un juego de ritmo donde la precisión al hacer clic y la
+                    memoria muscular son clave. Cada mapa es un reto distinto
+                    y siempre hay algo nuevo que aprender.
                 </p>
-
             </article>
 
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 2
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    📌
-                </div>
-
-                <h2>
-                    Subtema 2
-                </h2>
-
+                <div class="card-icon">🎯</div>
+                <h2>Competitivo</h2>
                 <p>
-                    Espacio reservado para desarrollar el segundo
-                    apartado del tema elegido.
+                    Valorant es mi vicio competitivo. Con casi 900 horas
+                    acumuladas, he aprendido que la puntería importa, pero
+                    la toma de decisiones y el trabajo en equipo pesan más.
+                    Cada partida es una oportunidad para mejorar.
                 </p>
-
             </article>
 
-
-            <!-- =================================================
-                 BLOQUE / SUBTEMA 3
-                 ================================================= -->
             <article class="info-card">
-
-                <div class="card-icon">
-                    💡
-                </div>
-
-                <h2>
-                    Subtema 3
-                </h2>
-
+                <div class="card-icon">🌫️</div>
+                <h2>Terror Psicológico</h2>
                 <p>
-                    Espacio reservado para desarrollar el tercer
-                    apartado del tema elegido.
+                    Silent Hill 2 no necesita 1,000 horas para marcarte. Con
+                    solo 30 horas se convirtió en una experiencia inolvidable.
+                    Su historia, su atmósfera y su forma de contar el duelo
+                    lo convierten en una obra maestra del terror.
                 </p>
-
             </article>
-
-
         </section>
 
     </main>
 
-
-    <!-- =====================================================
-         PIE DE PÁGINA
-         ===================================================== -->
+    <!-- PIE DE PÁGINA -->
     <footer class="footer">
-
-        <p>
-            Proyecto 2 · Servidor Web · GNU/Linux
-        </p>
-
-        <p class="footer-tech">
-            Erik · Tema libre
-        </p>
-
+        <p>Proyecto 2 · Servidor Web · GNU/Linux</p>
+        <p class="footer-tech">Erik · Tema libre</p>
     </footer>
+
+    <!-- MODAL OSU! -->
+    <div id="modal-osu" class="erik-modal">
+        <div class="erik-modal-contenido">
+            <span class="erik-cerrar" onclick="cerrarModal('modal-osu')">&times;</span>
+            <h3>osu!</h3>
+            <p><strong>Género:</strong> Juego de ritmo</p>
+            <p><strong>Desarrollador:</strong> Dean "peppy" Herbert</p>
+            <p><strong>Lanzamiento:</strong> 16 de septiembre de 2007</p>
+            <p><strong>Horas jugadas:</strong> 323 horas 🎵</p>
+            <p><strong>Plataformas:</strong> PC, Mac, Linux, Android, iOS</p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p><strong>🎲 Datos random:</strong></p>
+            <p>• Es 100% gratuito y hecho por fans para fans.</p>
+            <p>• Existen más de <strong>100,000 mapas</strong> creados por la comunidad.</p>
+            <p>• El sistema de <strong>PP (Performance Points)</strong> mide tu habilidad.</p>
+            <p>• Hay 4 modos: <strong>osu!standard, Taiko, Catch the Beat y osu!mania</strong>.</p>
+            <p>• El jugador profesional <strong>WhiteCat</strong> es considerado el mejor del mundo.</p>
+            <p>• Los jugadores usan <strong>tabletas gráficas</strong> para mayor precisión.</p>
+        </div>
+    </div>
+
+    <!-- MODAL VALORANT -->
+    <div id="modal-valorant" class="erik-modal">
+        <div class="erik-modal-contenido">
+            <span class="erik-cerrar" onclick="cerrarModal('modal-valorant')">&times;</span>
+            <h3>Valorant</h3>
+            <p><strong>Género:</strong> FPS táctico 5v5</p>
+            <p><strong>Desarrollador:</strong> Riot Games</p>
+            <p><strong>Lanzamiento:</strong> 2 de junio de 2020</p>
+            <p><strong>Horas jugadas:</strong> 890 horas 🔥</p>
+            <p><strong>Plataformas:</strong> PC (y próximamente consolas)</p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p><strong>🎲 Datos random:</strong></p>
+            <p>• Su sistema antitrampas <strong>Vanguard</strong> es uno de los más estrictos del gaming.</p>
+            <p>• <strong>Jett</strong> es el agente más jugado en competitivo.</p>
+            <p>• El <strong>VCT</strong> (Valorant Champions Tour) reparte más de 30 millones de dólares en premios.</p>
+            <p>• Tiene más de <strong>23 millones de jugadores activos</strong> al mes.</p>
+            <p>• El mapa <strong>Bind</strong> no tiene mid, es diferente a los demás.</p>
+            <p>• Los <strong>rondas competitivas</strong> duran 100 segundos cada una.</p>
+        </div>
+    </div>
+
+    <!-- MODAL SILENT HILL 2 -->
+    <div id="modal-silenthill" class="erik-modal">
+        <div class="erik-modal-contenido">
+            <span class="erik-cerrar" onclick="cerrarModal('modal-silenthill')">&times;</span>
+            <h3>Silent Hill 2</h3>
+            <p><strong>Género:</strong> Terror psicológico / Survival Horror</p>
+            <p><strong>Desarrollador:</strong> Team Silent (Konami)</p>
+            <p><strong>Lanzamiento:</strong> 24 de septiembre de 2001</p>
+            <p><strong>Horas jugadas:</strong> 30 horas 🌫️</p>
+            <p><strong>Plataformas:</strong> PS2, Xbox, PC (Remake en 2024)</p>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <p><strong>🎲 Datos random:</strong></p>
+            <p>• Está considerado uno de los <strong>mejores juegos de terror de la historia</strong>.</p>
+            <p>• La historia sigue a <strong>James Sunderland</strong> buscando a su esposa fallecida.</p>
+            <p>• El famoso <strong>Pyramid Head</strong> debutó en este juego.</p>
+            <p>• Su banda sonora fue compuesta por <strong>Akira Yamaoka</strong>.</p>
+            <p>• El <strong>remake de 2024</strong> fue un éxito de crítica y ventas.</p>
+            <p>• La niebla característica fue originalmente por <strong>limitaciones técnicas de la PS2</strong>.</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function abrirModal(idModal) {
+            document.getElementById(idModal).style.display = 'flex';
+        }
+
+        function cerrarModal(idModal) {
+            document.getElementById(idModal).style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target.classList.contains('erik-modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 
