@@ -1,0 +1,432 @@
+PROYECTO 2 - CONFIGURACION Y DEPENDENCIA DE LA API DE SPOTIFY
+================================================================
+
+OBJETIVO DE ESTE ARCHIVO
+-------------------------
+Este archivo acompaña al ZIP del Proyecto 2 y explica la configuración
+de Spotify necesaria para probar la integración del sitio.
+
+La demostración principal del proyecto se realizará sobre Ubuntu Server
+con Apache2. La integración con Spotify depende de una configuración
+específica de OAuth y de una dirección local de retorno (Redirect URI).
+
+1. API UTILIZADA
+----------------
+El proyecto utiliza Spotify Web API para obtener información del usuario
+autorizado y mostrarla en la sección de gustos musicales.
+
+Se consultan datos como:
+
+- Perfil de Spotify.
+- Artistas más escuchados.
+- Canciones más escuchadas.
+- Reproducciones recientes.
+
+El proyecto utiliza Authorization Code with PKCE para obtener autorización
+sobre los datos del usuario.
+
+2. APLICACION DE SPOTIFY
+------------------------
+Nombre de la aplicación:
+
+Proyecto 2 - Music Wrapped
+
+API:
+
+Spotify Web API
+
+Client ID:
+
+a2c7f03b916b4d808baddd013980dcbf
+
+IMPORTANTE:
+El Client Secret es información privada y NO forma parte de este proyecto,
+de este archivo ni del ZIP de entrega.
+
+3. REDIRECT URI
+---------------
+La aplicación utiliza actualmente:
+
+http://127.0.0.1:5500/callback.html
+
+Esta dirección debe estar configurada en Spotify for Developers.
+
+Spotify requiere que las Redirect URI coincidan con las utilizadas por la
+aplicación. Para desarrollo local se permite una dirección loopback como
+127.0.0.1; "localhost" no debe utilizarse como Redirect URI.
+
+Por este motivo:
+
+CORRECTO:
+http://127.0.0.1:5500/callback.html
+
+INCORRECTO PARA ESTE FLUJO:
+http://localhost:5500/callback.html
+
+4. FLUJO DE AUTENTICACION
+-------------------------
+El funcionamiento es:
+
+1. El usuario entra a una página de "Gustos musicales".
+2. Presiona "Conectar con Spotify".
+3. spotify.js genera un code_verifier.
+4. Se genera el code_challenge mediante SHA-256.
+5. Se guarda temporalmente la información necesaria en sessionStorage.
+6. El navegador es enviado a Spotify.
+7. El usuario autoriza la aplicación.
+8. Spotify devuelve un authorization code a callback.html.
+9. callback.html recupera el verifier.
+10. El código se intercambia por tokens.
+11. Los tokens de sesión se guardan.
+12. El usuario regresa a la página de gustos musicales.
+13. spotify.js consulta la Web API y muestra los resultados.
+
+5. SCOPES UTILIZADOS
+--------------------
+El proyecto solicita:
+
+- user-top-read
+- user-read-recently-played
+- user-read-private
+
+Estos permisos corresponden a la información utilizada por la página.
+
+6. ARCHIVOS DEL PROYECTO RELACIONADOS CON SPOTIFY
+-------------------------------------------------
+- spotify.js
+- callback.html
+- Páginas de gustos musicales
+- .vscode/settings.json
+
+7. CONFIGURACION DE VS CODE / LIVE SERVER
+-----------------------------------------
+Para pruebas locales con Live Server, el proyecto incluye:
+
+.vscode/settings.json
+
+Contenido actual:
+
+{
+    "liveServer.settings.host": "127.0.0.1",
+    "liveServer.settings.port": 5500
+}
+
+Esto hace que Live Server utilice:
+
+http://127.0.0.1:5500/
+
+en lugar de:
+
+http://localhost:5500/
+
+IMPORTANTE:
+Esta configuración SOLO afecta a Live Server de VS Code en la computadora
+donde se ejecute el proyecto.
+
+NO modifica:
+
+- Ubuntu Server.
+- Netplan.
+- Apache2.
+- MySQL.
+- PHP.
+- La IP estática de la máquina virtual.
+- La configuración NAT de VMware.
+- Los archivos del proyecto servidos por Apache.
+
+8. URL PARA PROBAR SPOTIFY CON LIVE SERVER
+------------------------------------------
+Cuando se utilice VS Code + Live Server, la dirección debe ser:
+
+http://127.0.0.1:5500/
+
+Ejemplo:
+
+http://127.0.0.1:5500/Alex/gustos.html
+
+No cambiar a localhost durante el flujo de autenticación de Spotify.
+
+9. DEMOSTRACION PRINCIPAL EN UBUNTU
+-----------------------------------
+La demostración del Proyecto 2 se realizará utilizando:
+
+Ubuntu Server
++
+Apache2
++
+proyecto montado en /var/www/html/
+
+Apache atiende en el puerto 80.
+
+Para permitir el uso del mismo origen local utilizado por Spotify, se
+configuró VMware NAT con una regla conceptualmente equivalente a:
+
+127.0.0.1:5500
+       |
+       v
+VMware NAT
+       |
+       v
+<IP_ESTÁTICA_DE_LA_VM>:80
+       |
+       v
+Apache2
+       |
+       v
+/var/www/html/
+       |
+       v
+Proyecto
+
+Por lo tanto, durante la demostración final puede utilizarse:
+
+http://127.0.0.1:5500/
+
+y el navegador llegará al Apache de Ubuntu mediante la redirección de
+puerto configurada en VMware.
+
+10. DIFERENCIA ENTRE DESARROLLO Y DEMOSTRACION
+----------------------------------------------
+DESARROLLO EN WINDOWS:
+VS Code + Live Server
+
+URL:
+http://127.0.0.1:5500/
+
+DEMOSTRACION DEL SERVIDOR:
+Ubuntu + Apache2 + VMware NAT
+
+URL:
+http://127.0.0.1:5500/
+
+Aunque la URL puede ser la misma, detrás de ella el servidor puede ser
+diferente:
+
+- En desarrollo, responde Live Server.
+- En la demostración, responde Apache2 dentro de Ubuntu mediante VMware NAT.
+
+La integración de Spotify depende de que el Redirect URI corresponda con
+el flujo utilizado.
+
+11. SOLUCION TEMPORAL UTILIZADA DURANTE LAS PRUEBAS
+----------------------------------------------------
+Antes de configurar VMware NAT se utilizó temporalmente un túnel SSH:
+
+ssh -L 5500:localhost:80 <usuario>@<IP_DE_LA_VM>
+
+Esto permitía:
+
+Windows:5500
+    ->
+SSH
+    ->
+Ubuntu:80
+    ->
+Apache
+
+Esta solución fue utilizada para pruebas.
+
+La configuración final de demostración utiliza VMware NAT para no depender
+de ejecutar manualmente un túnel SSH.
+
+12. DEPENDENCIA DE SPOTIFY PARA LA ENTREGA
+------------------------------------------
+El sitio web puede funcionar como página web aunque Spotify no esté
+autorizado, pero la sección interactiva de Spotify depende de servicios
+externos de Spotify.
+
+Para que la integración funcione se necesita:
+
+- Acceso a Internet.
+- Aplicación registrada en Spotify for Developers.
+- Client ID correcto.
+- Redirect URI configurado correctamente.
+- Navegador ejecutando el proyecto desde 127.0.0.1.
+- Cuenta de Spotify autorizada para utilizar la aplicación.
+- En Development Mode, el usuario debe estar permitido por la aplicación
+  según las reglas vigentes de Spotify.
+
+Por esta razón, copiar el ZIP por sí solo NO garantiza que una cuenta de
+Spotify cualquiera pueda autenticarse en cualquier computadora.
+
+La dependencia de Spotify es externa al código del proyecto.
+
+13. IMPORTANTE SOBRE DEVELOPMENT MODE
+--------------------------------------
+La aplicación de Spotify utilizada para este proyecto está en Development
+Mode.
+
+Las aplicaciones en Development Mode tienen restricciones de acceso.
+Actualmente, Spotify requiere que el propietario de la aplicación tenga
+Spotify Premium y limita a cinco usuarios autenticados por aplicación;
+cada usuario que vaya a utilizar la aplicación debe estar agregado a la
+allowlist correspondiente.
+
+Por eso, si el profesor o algún compañero prueba Spotify desde otra
+computadora y la API no devuelve datos, primero debe comprobarse que la
+cuenta de Spotify utilizada tenga acceso autorizado a la aplicación.
+
+14. SEGURIDAD
+-------------
+NO incluir en el ZIP:
+
+- Client Secret.
+- Access tokens.
+- Refresh tokens.
+- Cookies privadas.
+- Credenciales de cuentas personales.
+
+El Client ID sí identifica la aplicación, pero el Client Secret debe
+mantenerse privado.
+
+Los tokens utilizados por la página se generan durante el proceso de
+autorización.
+
+15. SI SPOTIFY SE QUEDA EN "CARGANDO..."
+----------------------------------------
+Revisar en este orden:
+
+1. Confirmar que el navegador utilice:
+   http://127.0.0.1:5500/
+
+2. Confirmar que NO se esté usando:
+   http://localhost:5500/
+
+3. Confirmar que exista:
+   callback.html
+
+4. Confirmar que el Redirect URI sea:
+   http://127.0.0.1:5500/callback.html
+
+5. Confirmar que spotify.js utilice el Client ID correcto.
+
+6. Confirmar que callback.html utilice el mismo Client ID y Redirect URI.
+
+7. Confirmar que la cuenta de Spotify tenga acceso autorizado a la
+   aplicación si está en Development Mode.
+
+8. Si se utiliza Ubuntu para la demostración, comprobar que la VM esté
+   encendida, Apache esté activo y VMware NAT esté configurado.
+
+16. COMANDOS DE COMPROBACION EN UBUNTU
+--------------------------------------
+Para comprobar el servidor durante la presentación se pueden utilizar:
+
+Ver la dirección IP:
+ip a
+
+Ver la ruta/gateway:
+ip route
+
+Ver Apache:
+sudo systemctl status apache2
+
+Ver MySQL:
+sudo systemctl status mysql --no-pager
+
+Ver PHP:
+php -v
+
+Comprobar localhost:
+curl -I http://localhost/
+
+Comprobar el HTML servido:
+curl -s http://localhost/ | head -n 20
+
+Ver archivos del sitio:
+ls -la /var/www/html/
+
+17. EVIDENCIA DE QUE LOCALHOST FUNCIONA
+---------------------------------------
+El comando:
+
+curl -I http://localhost/
+
+debe devolver una respuesta HTTP de Apache, normalmente:
+
+HTTP/1.1 200 OK
+
+Esto demuestra dentro de Ubuntu:
+
+Ubuntu
+  ->
+localhost
+  ->
+Apache2
+  ->
+sitio web
+
+18. ARCHIVOS QUE DEBEN VIAJAR EN EL ZIP
+---------------------------------------
+El ZIP debe contener el proyecto completo, incluyendo, según la estructura
+actual:
+
+- index.html
+- carpetas de los integrantes
+- img/
+- style.css
+- spotify.js
+- callback.html
+- .vscode/settings.json
+- SPOTIFY_API.txt
+
+También deben incluirse todos los recursos que el sitio utilice.
+
+19. NOTA SOBRE .vscode/settings.json
+------------------------------------
+El archivo settings.json es una configuración de VS Code y Live Server.
+
+Su función es facilitar que otra computadora abra el proyecto mediante:
+
+http://127.0.0.1:5500/
+
+Para el servidor Ubuntu, esta configuración no es utilizada por Apache.
+
+Por lo tanto:
+
+- Live Server -> usa settings.json.
+- Apache -> usa la configuración de Ubuntu/VMware.
+
+20. FUENTES OFICIALES
+---------------------
+Spotify - Redirect URIs:
+https://developer.spotify.com/documentation/web-api/concepts/redirect_uri
+
+Spotify - Development Mode / quota:
+https://developer.spotify.com/documentation/web-api/concepts/quota-modes
+
+Spotify - Authorization Code with PKCE:
+https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
+
+Spotify - Apps:
+https://developer.spotify.com/documentation/web-api/concepts/apps
+
+21. RESUMEN
+-----------
+El proyecto web principal funciona de forma local y fue montado en Ubuntu
+Server mediante Apache2.
+
+La integración de Spotify es una función adicional que depende de:
+
+- Spotify Web API.
+- OAuth 2.0 Authorization Code with PKCE.
+- Redirect URI.
+- Internet.
+- Autorización de la cuenta de Spotify.
+
+La URL local utilizada para el flujo de Spotify es:
+
+http://127.0.0.1:5500/
+
+y el callback es:
+
+http://127.0.0.1:5500/callback.html
+
+Para la presentación, la VM de Ubuntu y Apache2 son el servidor principal.
+VMware NAT permite que el navegador acceda al Apache de Ubuntu mediante el
+puerto 5500.
+
+El ZIP contiene la configuración necesaria para que el proyecto pueda ser
+abierto en otra computadora, pero la función de Spotify sigue dependiendo
+de la aplicación registrada en Spotify y de las restricciones de acceso
+vigentes para esa aplicación.
